@@ -1,43 +1,45 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+//'@material-ui/core' libreria de estilos como boostrap
+import { Container, Typography, Card, Grid, TextField, Button } from '@material-ui/core';
 
-import { getDemoRequest } from '../../redux/actions/demoActions';
+export default function Home(){
+	const [searchText, setSearchText] = useState ('');
 
-import User from '../../components/User';
+	//al ser invocada realiza cambios en el useState
+	function handleSearchTextChange (event){
+		setSearchText(event.target.value)
+	};
 
-class Home extends Component {
-	componentWillMount() {
-		this.props.getDemoRequest('hey');
-	}
-	render() {
-		const { users } = this.props;
+	function handleCleanTextClick(event){
+		console.log(10);
+	};
+	function handleSearchTextClick(event){
+		console.log(20);
+	};
 
-		let items = [];
-		if (typeof users !== 'undefined') {
-			items = users.map((value, index) => {
-				return <User key={index} {...value} />;
-			});
-		}
-		return <div>{items}</div>;
-	}
+	return (
+		<Container>
+			<Card>
+				<Grid container>
+					<Grid>
+						<Typography> Welcome</Typography>
+					</Grid>
+					<Grid>
+						<label>Icon</label>
+					</Grid>
+				</Grid>
+				<TextField
+					value = {searchText}
+					/*placeholder nos deja un comentario informativo*/
+					placeholder="Buscar. . ."
+					/*onChange ante cualquier cambio invoca a algo*/
+					onChange={handleSearchTextChange}
+				/>
+				<Grid>
+					<Button variant="contained" onClick={handleCleanTextClick}>Limpiar</Button>
+					<Button variant="contained" onClick={handleSearchTextClick}>Buscar</Button>
+				</Grid>
+			</Card>	
+		</Container>
+		);
 }
-
-const mapDispatchToProps = (dispatch, props) => {
-	return {
-		getDemoRequest: payload => {
-			dispatch(getDemoRequest(payload));
-		}
-	};
-};
-const mapStateToProps = state => {
-	return {
-		users: state.demoReducer[0]
-	};
-};
-
-Home.propTypes = {
-	dispatch: PropTypes.func
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
