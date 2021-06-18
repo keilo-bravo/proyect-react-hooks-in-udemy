@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 //'@material-ui/core' libreria de estilos como boostrap
 import { Container, Typography, Card, Grid, TextField, Button } from '@material-ui/core';
 import styles from './style';
+import { MovieIon } from '../../icons';
 
 
 export default function Home(){
@@ -27,7 +28,7 @@ export default function Home(){
 						<Typography className={classes.title} > Welcome ! </Typography>
 					</Grid>
 					<Grid>
-						<label>Icon</label>
+						<MovieIon/>
 					</Grid>
 				</Grid>
 				<TextField
