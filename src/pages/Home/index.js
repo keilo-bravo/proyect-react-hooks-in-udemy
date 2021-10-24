@@ -5,7 +5,7 @@ import styles from './style';
 import { MovieIon } from '../../icons';
 
 
-export default function Home(){
+export default function Home( { history } ){
 	const [searchText, setSearchText] = useState ('');
 	const classes = styles();
 	//al ser invocada realiza cambios en el useState
@@ -14,10 +14,10 @@ export default function Home(){
 	};
 
 	function handleCleanTextClick(event){
-		console.log(10);
+		setSearchText('')
 	};
 	function handleSearchTextClick(event){
-		console.log(20);
+		history.push(`/results?movieName=${searchText}`)
 	};
 
 	return (
