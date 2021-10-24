@@ -8,9 +8,11 @@ export default function( state = initialState, action ){
             return { ...state };
 
         case SEARCH_MOVIE_ERROR:
+            console.log("error",action);
             return { ...state };
 
         case SEARCH_MOVIE_COMPLETE:
+            console.log("complete",action);
             return { ...state };
                
         default:

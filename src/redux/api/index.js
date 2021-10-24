@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const baseURL = 'https://www.omdbapi.com/?apiKey=ffd0c3a5';
+const baseURL = 'http://www.omdbapi.com/?apikey=e022a6a7';
 
 export const apiCall = ( method, url, data, headers ) => Axios({
     method,
